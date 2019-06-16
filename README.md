@@ -565,13 +565,86 @@ Create index DeptIndex on University.Student(dept);
 Drop index IF EXISTS KeyspaceName.IndexName 
 
 ```
+
+# Getting Started with Cassandra on Docker 
+
+```
+
+
+Step 1. Create Docker Account
+
+Step 2. Installing Docker
+
+Step 3. Pull The Docker Images
+		Docker Login
+		$ docker login
+
+Step 4. Pull the DataStax Image
+The DataStax Server Image is the DataStax distribution of Apache Cassandra with additional capabilities of Search Engine, Spark Analytics and Graph Components (configurable at the docker run step). For quality and simplicity, this is your best bet.
+		$ docker pull datastax/dse-server:latest
+
+Step 5 .Pull DataStax Studio Image (Notebook)
+		$ docker pull datastax/dse-studio:latest
+
+Step 6. Run The Containers
+The -g flag starts a Node with Graph Model enabled
+The -s flag starts a Node with Search Engine enabled
+The -k flag starts a Node with Spark Analytics enabled
+		$> docker run -e DS_LICENSE=accept --memory 4g --name my-dse -d datastax/dse-server -g -s -k
+
+		$> docker run -e DS_LICENSE=accept --link my-dse -p 9091:9091 --memory 1g --name my-studio -d datastax/dse-studio
+
+Step 7. Connecting Studio
+
+```
+
+
+========= Status =========
+#Active containers
+$> docker ps
+#Container Utilization
+$> docker stats
+#Container Details
+$> docker inspect my-dse
+#NodeTool Status
+$> docker exec -it my-dse nodetool status
+
+========== Logs ==========
+#Server Logs
+$> docker logs my-dse
+#System Out
+$> docker exec -it my-dse cat /var/log/cassandra/system.log
+#Studio Logs
+$> docker logs my-studio
+
+==== Start/Stop/Remove ====
+#Start Container
+$> docker start my-dse
+#Stop Container
+$> docker stop my-dse
+#Remove Container
+$> docker remove my-dse
+
+======= Additional =======
+#Contaier IPAddress
+&> docker inspect my-dse | grep IPAddress
+#CQL (Requires IPAddress from above)
+$> docker exec -it my-dse cqlsh [IPAddress]
+#Bash
+$> docker exec -it my-dse bash
+DockerCassandraDatastaxNoSQLApache Spark
+
+
+
 ```bash
 $ java -Djava.security.egd=file:/dev/./urandom -jar app.jar \
     --spring.data.cassandra.contact-points=assandra_contact_point1,cassandra_contact_point2 \
     --spring.data.cassandra.keyspace-name=keyspace-name
 ``` 
 
-#
+
+
+
 ### How to run
 
 ### Maven
