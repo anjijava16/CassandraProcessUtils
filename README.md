@@ -599,7 +599,9 @@ Step 7. Connecting Studio
 ```
 
 
-========= Status =========
+# ========= Status =========
+
+```
 #Active containers
 $> docker ps
 #Container Utilization
@@ -607,9 +609,17 @@ $> docker stats
 #Container Details
 $> docker inspect my-dse
 #NodeTool Status
+
 $> docker exec -it my-dse nodetool status
 
-========== Logs ==========
+
+
+```
+
+
+
+# ========== Logs ==========
+```
 #Server Logs
 $> docker logs my-dse
 #System Out
@@ -617,7 +627,11 @@ $> docker exec -it my-dse cat /var/log/cassandra/system.log
 #Studio Logs
 $> docker logs my-studio
 
-==== Start/Stop/Remove ====
+```
+
+# ==== Start/Stop/Remove ====
+
+```
 #Start Container
 $> docker start my-dse
 #Stop Container
@@ -625,7 +639,11 @@ $> docker stop my-dse
 #Remove Container
 $> docker remove my-dse
 
-======= Additional =======
+```
+
+# ======= Additional =======
+
+```
 #Contaier IPAddress
 &> docker inspect my-dse | grep IPAddress
 #CQL (Requires IPAddress from above)
@@ -634,7 +652,7 @@ $> docker exec -it my-dse cqlsh [IPAddress]
 $> docker exec -it my-dse bash
 DockerCassandraDatastaxNoSQLApache Spark
 
-
+```
 
 ```bash
 $ java -Djava.security.egd=file:/dev/./urandom -jar app.jar \
