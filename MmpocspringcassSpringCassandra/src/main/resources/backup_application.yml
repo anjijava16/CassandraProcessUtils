@@ -1,0 +1,16 @@
+application:
+  name: spring-boot-cassandra-datastax1
+server:
+  port: 9003
+  context-path: /cassandraService
+# Following are Cassandra Configuration
+cassandra:
+  host: 127.0.0.1:9042
+  cluster:
+    name: test
+    username: cassandra
+    password: cassandra
+  keyspace:
+    name: mmtechwork
+   
+  
